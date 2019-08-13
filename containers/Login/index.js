@@ -1,7 +1,27 @@
 import React from "react";
-
-export default class Login extends React.Component {
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { login } from "../../shared/store";
+import { UserLogin } from "../../components";
+class Login extends React.Component {
   render() {
-    return <div>Component</div>;
+    return <UserLogin {...this.props} />;
   }
 }
+
+const mapStateToProps = state => {
+  return { auth: state.auth };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login: payload => dispatch(login(payload))
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login)
+);
