@@ -1,13 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import axios from "axios";
+import { Provider } from "react-redux";
+import { configureStore, reducers } from "./shared/store";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
+const store = configureStore(axios, {},reducers);
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 

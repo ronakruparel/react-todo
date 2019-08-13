@@ -1,2 +1,7 @@
 import React from "react";
-export default () => <div>Connected</div>;
+
+export default class Login extends React.Component {
+  render() {
+    return <div>Component</div>;
+  }
+}
