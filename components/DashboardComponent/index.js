@@ -11,7 +11,9 @@ function DashboardComponent({ buckets, addNewBucket, handleClick }) {
         <h2>List of Buckets</h2>
       </div>
       <div>
-        <button onClick={addNewBucket}>Add New bucket</button>
+        <button className="addBucket" onClick={addNewBucket}>
+          Add New bucket
+        </button>
       </div>
       <div className="bucketWrapper">
         {buckets.buckets.data.length &&

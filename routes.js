@@ -11,7 +11,7 @@ export default () => (
     />
     <Route
       exact
-      path={`${process.env.PUBLIC_URL}/buckets/todo`}
+      path={`${process.env.PUBLIC_URL}/bucket/todo`}
       component={Todo}
     />
   </Switch>

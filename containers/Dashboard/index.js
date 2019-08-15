@@ -23,7 +23,7 @@ class Dashboard extends React.Component {
 
   handleClick = bucket => {
     localStorage.setItem("bucket", bucket.bucket_id);
-    this.props.history.push(`${process.env.PUBLIC_URL}/todolist`);
+    this.props.history.push(`${process.env.PUBLIC_URL}/bucket/todo`);
   };
 
   render() {

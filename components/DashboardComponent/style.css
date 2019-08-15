@@ -1,9 +1,9 @@
 .header {
   margin: 0;
+  text-align: center;
   padding: 0;
   height: 50px;
   width: 100%;
-  background: #37a2be;
 }
 .bucketListWrapper {
   margin: 0 auto;
@@ -18,6 +18,11 @@
 }
 .editIcon {
   float: right;
+}
+.addBucket {
+  width: 150px;
+  height: 30px;
+  border-radius: 2px;
 }
 .bucketWrapper {
   display: block;

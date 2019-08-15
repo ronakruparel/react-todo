@@ -1,0 +1,15 @@
+.todoListWrapper {
+  margin: 0 auto;
+  text-align: center;
+  display: inline-block;
+  width: 300px;
+  height: 60px;
+  padding: 20px;
+  box-shadow: 2px 5px 5px 5px #e4e2e2;
+  overflow: auto;
+}
+.back {
+  width: 150px;
+  height: 30px;
+  border-radius: 2px;
+}
