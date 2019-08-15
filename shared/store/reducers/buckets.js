@@ -7,9 +7,21 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case `${GET_BUCKETS}_REQUEST`: {
+      return {
+        ...state,
+        loading: true,
+        loaded: false
+      };
+    }
+
     case GET_BUCKETS: {
-      console.log(action);
-      return { ...state };
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        buckets: action.payload
+      };
     }
     default:
       return { ...state };

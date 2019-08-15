@@ -1,0 +1,26 @@
+.header {
+  margin: 0;
+  padding: 0;
+  height: 50px;
+  width: 100%;
+  background: #37a2be;
+}
+.bucketListWrapper {
+  margin: 0 auto;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  width: 300px;
+  height: 60px;
+  padding: 20px;
+  box-shadow: 2px 5px 5px 5px #e4e2e2;
+  overflow: auto;
+}
+.editIcon {
+  float: right;
+}
+.bucketWrapper {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
