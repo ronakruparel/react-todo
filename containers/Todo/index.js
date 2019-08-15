@@ -27,11 +27,28 @@ class Todo extends React.Component {
     const { todos } = this.props;
 
     return (
-      !todos.loading &&
-      todos.loaded &&
-      todos.todos.data.length && (
-        <TodoList {...this.props} toggleTodoStatus={this.toggleTodoStatus} />
-      )
+      <div>
+        <div className="header">
+          <h1>To-do Application</h1>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <h2>List of Todos</h2>
+        </div>
+        <div>
+          <button className="addBucket">Add New Todo</button>
+          <button
+            className="back"
+            onClick={() =>
+              this.props.history.push(`${process.env.PUBLIC_URL}/buckets`)
+            }
+          >
+            Back
+          </button>
+        </div>
+        {!todos.loading && todos.loaded && todos.todos.data.length && (
+          <TodoList {...this.props} toggleTodoStatus={this.toggleTodoStatus} />
+        )}
+      </div>
     );
   }
 }
