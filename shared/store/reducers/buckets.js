@@ -1,4 +1,4 @@
-import { GET_BUCKETS } from "../constants";
+import { GET_BUCKETS, ADD_NEW_BUCKET } from "../constants";
 const initialState = {
   loading: false,
   loaded: false,
@@ -21,6 +21,22 @@ export default (state = initialState, action) => {
         loading: false,
         loaded: true,
         buckets: action.payload
+      };
+    }
+
+    case ADD_NEW_BUCKET: {
+      return {
+        ...state,
+        buckets: {
+          ...state.buckets,
+          data: [
+            ...state.buckets.data,
+            {
+              bucket_id: state.buckets.data.length + 1,
+              bucket_name: action.data.bucket_name
+            }
+          ]
+        }
       };
     }
     default:

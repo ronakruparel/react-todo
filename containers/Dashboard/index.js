@@ -1,12 +1,14 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { getBuckets } from "../../shared/store";
+import { getBuckets, addNewBucket } from "../../shared/store";
 import { connect } from "react-redux";
 import { DashboardComponent } from "../../components";
 class Dashboard extends React.Component {
   state = {
-    addNewBucket: false
+    addNewBucket: false,
+    bucketname: ""
   };
+
   componentDidMount() {
     if (!localStorage.getItem("token")) {
       this.props.history.push(`${process.env.PUBLIC_URL}/`);
@@ -16,8 +18,19 @@ class Dashboard extends React.Component {
   }
 
   addNewBucket = () => {
+    //Throw alert on empty submit
+    if (!this.state.bucketname.length) {
+      alert("Please enter name");
+    } else {
+      console.log(this.props);
+      this.props.addNewBucket({ bucket_name: this.state.bucketname });
+      // .then(res => console.log(res));
+    }
+  };
+
+  handleChange = e => {
     this.setState({
-      addNewBucket: true
+      [e.target.name]: e.target.value
     });
   };
 
@@ -35,6 +48,8 @@ class Dashboard extends React.Component {
           {...this.props}
           addNewBucket={this.addNewBucket}
           handleClick={this.handleClick}
+          handleChange={this.handleChange}
+          bucketname={this.state.bucketname}
         />
       )
     );
@@ -46,7 +61,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getBuckets: () => dispatch(getBuckets())
+    getBuckets: () => dispatch(getBuckets()),
+    addNewBucket: payload => dispatch(addNewBucket(payload))
   };
 };
 export default withRouter(
