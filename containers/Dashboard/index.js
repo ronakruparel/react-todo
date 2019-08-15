@@ -39,6 +39,10 @@ class Dashboard extends React.Component {
     this.props.history.push(`${process.env.PUBLIC_URL}/bucket/todo`);
   };
 
+  handleLogout = () => {
+    this.props.history.push(`${process.env.PUBLIC_URL}`);
+  };
+
   render() {
     const { buckets } = this.props;
     return (
@@ -50,6 +54,7 @@ class Dashboard extends React.Component {
           handleClick={this.handleClick}
           handleChange={this.handleChange}
           bucketname={this.state.bucketname}
+          handleLogout={this.handleLogout}
         />
       )
     );

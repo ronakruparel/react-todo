@@ -5,7 +5,8 @@ function DashboardComponent({
   addNewBucket,
   handleClick,
   bucketname,
-  handleChange
+  handleChange,
+  handleLogout
 }) {
   return (
     <div>
@@ -26,9 +27,9 @@ function DashboardComponent({
         <button className="addBucket" onClick={addNewBucket}>
           Add New bucket
         </button>
-        {/* <button className="addBucket" onClick={addTodo}>
-          Add New Todo
-        </button> */}
+        <button className="addBucket" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
       <div className="bucketWrapper">
         {buckets.buckets.data.map(bucket => {

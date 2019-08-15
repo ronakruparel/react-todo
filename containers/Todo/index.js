@@ -71,6 +71,12 @@ class Todo extends React.Component {
           >
             Back
           </button>
+          <button
+            className="back"
+            onClick={() => this.props.history.push(`${process.env.PUBLIC_URL}`)}
+          >
+            Logout
+          </button>
         </div>
         {!todos.loading && todos.loaded && todos.todos.data.length && (
           <TodoList {...this.props} toggleTodoStatus={this.toggleTodoStatus} />
