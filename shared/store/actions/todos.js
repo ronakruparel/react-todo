@@ -1,4 +1,4 @@
-import { GET_TODOS, UPDATE_TODO } from "../constants";
+import { GET_TODOS, UPDATE_TODO, ADD_NEW_TODO } from "../constants";
 const URL = "http://localhost:9000";
 
 export const getBucketTodos = bucket_id => {
@@ -13,5 +13,13 @@ export const updateTodo = payload => {
     type: UPDATE_TODO,
     data: payload,
     promise: client => client.put(`${URL}/todo`, payload)
+  };
+};
+
+export const addNewTodo = payload => {
+  return {
+    type: ADD_NEW_TODO,
+    data: payload,
+    promise: client => client.post(`${URL}/todo`, payload)
   };
 };

@@ -1,9 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { getBucketTodos, updateTodo } from "../../shared/store";
+import { getBucketTodos, updateTodo, addNewTodo } from "../../shared/store";
 import { TodoList } from "../../components";
 class Todo extends React.Component {
+  state = {
+    title: ""
+  };
   componentDidMount() {
     let id = localStorage.getItem("bucket");
     let token = localStorage.getItem("token");
@@ -23,6 +26,21 @@ class Todo extends React.Component {
     this.props.updateTodo({ todo_id: todo.todo_id, status });
   };
 
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  addNewTodo = () => {
+    let bucket_id = localStorage.getItem("bucket");
+    if (!this.state.title) {
+      alert("add name");
+    } else {
+      this.props.addNewTodo({ title: this.state.title, bucket_id });
+    }
+  };
+
   render() {
     const { todos } = this.props;
 
@@ -35,7 +53,16 @@ class Todo extends React.Component {
           <h2>List of Todos</h2>
         </div>
         <div>
-          <button className="addBucket">Add New Todo</button>
+          <input
+            type="text"
+            value={this.state.title}
+            name="title"
+            onChange={this.handleChange}
+            placeholder="Type todo title"
+          />
+          <button className="addBucket" onClick={this.addNewTodo}>
+            Add New Todo
+          </button>
           <button
             className="back"
             onClick={() =>
@@ -59,7 +86,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getBucketTodos: id => dispatch(getBucketTodos(id)),
-    updateTodo: payload => dispatch(updateTodo(payload))
+    updateTodo: payload => dispatch(updateTodo(payload)),
+    addNewTodo: payload => dispatch(addNewTodo(payload))
   };
 };
 export default withRouter(

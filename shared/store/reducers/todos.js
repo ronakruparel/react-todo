@@ -1,4 +1,4 @@
-import { GET_TODOS, UPDATE_TODO } from "../constants";
+import { GET_TODOS, UPDATE_TODO, ADD_NEW_TODO } from "../constants";
 const initialState = {
   loading: false,
   loaded: false,
@@ -35,6 +35,19 @@ export default (state = initialState, action) => {
               return { ...todo };
             }
           })
+        }
+      };
+    }
+
+    case ADD_NEW_TODO: {
+      return {
+        ...state,
+        todos: {
+          ...state.todos,
+          data: [
+            ...state.todos.data,
+            { title: action.data.title, status: "inprogress" }
+          ]
         }
       };
     }
