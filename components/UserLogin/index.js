@@ -13,7 +13,12 @@ export default class UserLogin extends React.Component {
 
   handleLogin = e => {
     e.preventDefault();
-    this.props.login(this.state);
+    this.props.login(this.state).then(res => {
+      if (res.payload && res.payload.status === 0) {
+        localStorage.setItem("token", res.payload.data.token);
+        this.props.history.push(`${process.env.PUBLIC_URL}/dashboard`);
+      }
+    });
   };
   render() {
     const { username, password } = this.state;

@@ -4,6 +4,10 @@ import { connect } from "react-redux";
 import { login } from "../../shared/store";
 import { UserLogin } from "../../components";
 class Login extends React.Component {
+  componentDidMount() {
+    localStorage.clear("token");
+  }
+
   render() {
     return <UserLogin {...this.props} />;
   }

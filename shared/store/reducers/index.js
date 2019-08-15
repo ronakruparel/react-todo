@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
 import { default as auth } from "./auth";
 import { default as todo } from "./todo";
-export default combineReducers({ auth, todo });
+import { default as buckets } from "./buckets";
+export default combineReducers({ auth, todo, buckets });

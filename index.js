@@ -7,7 +7,19 @@ import { configureStore, reducers } from "./shared/store";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-const store = configureStore(axios, {},reducers);
+//add header token for every request
+axios.interceptors.request.use(
+  config => {
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = token;
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
+
+const store = configureStore(axios, {}, reducers);
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

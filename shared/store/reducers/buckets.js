@@ -1,16 +1,16 @@
-import { LOGIN_USER } from "../constants";
+import { GET_BUCKETS } from "../constants";
 const initialState = {
   loading: false,
   loaded: false,
-  data: {}
+  buckets: {}
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_USER:
+    case GET_BUCKETS: {
       console.log(action);
-      return { ...state, data: action.payload };
-
+      return { ...state };
+    }
     default:
       return { ...state };
   }
